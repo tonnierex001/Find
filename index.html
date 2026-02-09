@@ -62,6 +62,28 @@
           </form>
           <p class="fine-print">New here? Create a family account in minutes.</p>
         </div>
+        <div class="hero-card notifications-card">
+          <h2>Parent profile</h2>
+          <p>Get notified when new schools register in your area.</p>
+          <form class="login-form" id="parent-profile-form">
+            <label>
+              Full name
+              <input id="parent-name" type="text" placeholder="Ada Okoye" required />
+            </label>
+            <label>
+              Email address
+              <input id="parent-email" type="email" placeholder="parent@example.com" required />
+            </label>
+            <label>
+              City / Area
+              <input id="parent-city" type="text" placeholder="Lagos" required />
+            </label>
+            <button class="ghost" type="submit">Save profile</button>
+          </form>
+          <div class="notification-list" id="notification-list">
+            <p class="fine-print">No notifications yet.</p>
+          </div>
+        </div>
       </section>
 
       <section id="discover" class="discover">
@@ -97,15 +119,15 @@
           <h2>Register your school</h2>
           <p>Upload every detail parents need: facilities, academics, photos, and video tours.</p>
         </div>
-        <form class="registration-form">
+        <form class="registration-form" id="school-registration-form">
           <div class="form-grid">
             <label>
               School name
-              <input type="text" placeholder="Sunrise Academy" required />
+              <input id="school-name" type="text" placeholder="Sunrise Academy" required />
             </label>
             <label>
               School type
-              <select required>
+              <select id="school-type" required>
                 <option value="">Select type</option>
                 <option>Primary</option>
                 <option>Secondary</option>
@@ -115,24 +137,25 @@
             </label>
             <label>
               Address
-              <input type="text" placeholder="123 Learning Lane" required />
+              <input id="school-address" type="text" placeholder="123 Learning Lane" required />
             </label>
             <label>
               City
-              <input type="text" placeholder="Lagos" required />
+              <input id="school-city" type="text" placeholder="Lagos" required />
             </label>
             <label>
               Contact email
-              <input type="email" placeholder="info@school.edu" required />
+              <input id="school-email" type="email" placeholder="info@school.edu" required />
             </label>
             <label>
               Phone number
-              <input type="tel" placeholder="+234 555 0101" required />
+              <input id="school-phone" type="tel" placeholder="+234 555 0101" required />
             </label>
           </div>
           <label class="full">
             School overview
             <textarea
+              id="school-overview"
               rows="4"
               placeholder="Share your mission, curriculum highlights, and unique programs."
             ></textarea>
@@ -140,16 +163,20 @@
           <div class="form-grid">
             <label>
               Upload images
-              <input type="file" accept="image/*" multiple />
+              <input id="school-images" type="file" accept="image/*" multiple />
             </label>
             <label>
               Upload videos
-              <input type="file" accept="video/*" multiple />
+              <input id="school-videos" type="file" accept="video/*" multiple />
             </label>
           </div>
           <label class="full">
             Facilities & extracurriculars
-            <textarea rows="3" placeholder="Science labs, sports fields, clubs, transport options..."></textarea>
+            <textarea
+              id="school-facilities"
+              rows="3"
+              placeholder="Science labs, sports fields, clubs, transport options..."
+            ></textarea>
           </label>
           <button class="primary" type="submit">Submit school profile</button>
         </form>
