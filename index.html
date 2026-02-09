@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Find - School Discovery Platform</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="logo">Find</div>
+      <nav class="site-nav">
+        <a href="#discover">Discover schools</a>
+        <a href="#register">Register a school</a>
+        <a href="#ratings">Ratings</a>
+      </nav>
+      <button class="primary">Get started</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">School selection made simple</p>
+          <h1>Help families find the right school, faster.</h1>
+          <p>
+            School management teams can publish their full profiles, and parents can search by location or
+            name, compare ratings, and find the best match for their learners.
+          </p>
+          <div class="hero-actions">
+            <button class="primary">Register a school</button>
+            <button class="ghost">Explore listings</button>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <strong>1,200+</strong>
+              <span>Schools onboarded</span>
+            </div>
+            <div>
+              <strong>34k</strong>
+              <span>Parents searching weekly</span>
+            </div>
+            <div>
+              <strong>4.6</strong>
+              <span>Average community rating</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>Parent / Guardian login</h2>
+          <p>Save favourite schools, leave ratings, and track new openings.</p>
+          <form class="login-form">
+            <label>
+              Email address
+              <input type="email" placeholder="parent@example.com" required />
+            </label>
+            <label>
+              Password
+              <input type="password" placeholder="Enter password" required />
+            </label>
+            <button class="primary" type="submit">Sign in</button>
+          </form>
+          <p class="fine-print">New here? Create a family account in minutes.</p>
+        </div>
+        <div class="hero-card notifications-card">
+          <h2>Parent profile</h2>
+          <p>Get notified when new schools register in your area.</p>
+          <form class="login-form" id="parent-profile-form">
+            <label>
+              Full name
+              <input id="parent-name" type="text" placeholder="Ada Okoye" required />
+            </label>
+            <label>
+              Email address
+              <input id="parent-email" type="email" placeholder="parent@example.com" required />
+            </label>
+            <label>
+              City / Area
+              <input id="parent-city" type="text" placeholder="Lagos" required />
+            </label>
+            <button class="ghost" type="submit">Save profile</button>
+          </form>
+          <div class="notification-list" id="notification-list">
+            <p class="fine-print">No notifications yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="discover" class="discover">
+        <div class="section-heading">
+          <h2>Search for schools near you</h2>
+          <p>Filter by school name, city, and rating to discover the right fit.</p>
+        </div>
+        <div class="search-panel">
+          <label>
+            School name
+            <input id="search-name" type="search" placeholder="Search by name" />
+          </label>
+          <label>
+            City / Area
+            <input id="search-city" type="text" placeholder="Search by city" />
+          </label>
+          <label>
+            Minimum rating
+            <select id="search-rating">
+              <option value="0">Any rating</option>
+              <option value="3">3+ stars</option>
+              <option value="4">4+ stars</option>
+              <option value="4.5">4.5+ stars</option>
+            </select>
+          </label>
+          <button class="ghost" id="use-location" type="button">Use my location</button>
+        </div>
+        <div class="results" id="school-results"></div>
+      </section>
+
+      <section id="register" class="register">
+        <div class="section-heading">
+          <h2>Register your school</h2>
+          <p>Upload every detail parents need: facilities, academics, photos, and video tours.</p>
+        </div>
+        <form class="registration-form" id="school-registration-form">
+          <div class="form-grid">
+            <label>
+              School name
+              <input id="school-name" type="text" placeholder="Sunrise Academy" required />
+            </label>
+            <label>
+              School type
+              <select id="school-type" required>
+                <option value="">Select type</option>
+                <option>Primary</option>
+                <option>Secondary</option>
+                <option>K-12</option>
+                <option>Special needs</option>
+              </select>
+            </label>
+            <label>
+              Address
+              <input id="school-address" type="text" placeholder="123 Learning Lane" required />
+            </label>
+            <label>
+              City
+              <input id="school-city" type="text" placeholder="Lagos" required />
+            </label>
+            <label>
+              Contact email
+              <input id="school-email" type="email" placeholder="info@school.edu" required />
+            </label>
+            <label>
+              Phone number
+              <input id="school-phone" type="tel" placeholder="+234 555 0101" required />
+            </label>
+          </div>
+          <label class="full">
+            School overview
+            <textarea
+              id="school-overview"
+              rows="4"
+              placeholder="Share your mission, curriculum highlights, and unique programs."
+            ></textarea>
+          </label>
+          <div class="form-grid">
+            <label>
+              Upload images
+              <input id="school-images" type="file" accept="image/*" multiple />
+            </label>
+            <label>
+              Upload videos
+              <input id="school-videos" type="file" accept="video/*" multiple />
+            </label>
+          </div>
+          <label class="full">
+            Facilities & extracurriculars
+            <textarea
+              id="school-facilities"
+              rows="3"
+              placeholder="Science labs, sports fields, clubs, transport options..."
+            ></textarea>
+          </label>
+          <button class="primary" type="submit">Submit school profile</button>
+        </form>
+      </section>
+
+      <section id="ratings" class="ratings">
+        <div class="section-heading">
+          <h2>Leave a rating</h2>
+          <p>Parents and alumni can share feedback to help others choose confidently.</p>
+        </div>
+        <form class="rating-form">
+          <label>
+            Select school
+            <select id="rating-school" required></select>
+          </label>
+          <label>
+            Rating
+            <select id="rating-score" required>
+              <option value="5">5 - Outstanding</option>
+              <option value="4">4 - Great</option>
+              <option value="3">3 - Good</option>
+              <option value="2">2 - Needs improvement</option>
+              <option value="1">1 - Poor</option>
+            </select>
+          </label>
+          <label class="full">
+            Comment
+            <textarea rows="3" placeholder="Share your experience..."></textarea>
+          </label>
+          <button class="ghost" type="submit">Submit rating</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Find</strong>
+        <p>Connecting families with the best-fit schools and helping schools reach the right students.</p>
+      </div>
+      <div>
+        <p class="footer-title">Contact</p>
+        <p>support@findschools.com</p>
+        <p>+234 800 000 0000</p>
+      </div>
+      <div>
+        <p class="footer-title">Platform</p>
+        <a href="#register">Register a school</a>
+        <a href="#discover">Search schools</a>
+        <a href="#ratings">Ratings</a>
+      </div>
+    </footer>
+  </body>
+</html>
