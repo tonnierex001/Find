@@ -44,6 +44,12 @@ const ratingInput = document.getElementById("search-rating");
 const useLocationButton = document.getElementById("use-location");
 const ratingSchoolSelect = document.getElementById("rating-school");
 const ratingForm = document.querySelector(".rating-form");
+const registrationForm = document.getElementById("school-registration-form");
+const notificationList = document.getElementById("notification-list");
+const parentProfileForm = document.getElementById("parent-profile-form");
+const parentCityInput = document.getElementById("parent-city");
+let parentProfile = null;
+const schoolRegistrations = [];
 
 const renderSchools = (data) => {
   results.innerHTML = "";
@@ -86,6 +92,35 @@ const populateRatingOptions = () => {
     .join("");
 };
 
+const renderNotifications = () => {
+  if (!parentProfile) {
+    notificationList.innerHTML = "<p class=\"fine-print\">Save your profile to receive notifications.</p>";
+    return;
+  }
+
+  const relevant = schoolRegistrations
+    .filter((item) => item.city.toLowerCase() === parentProfile.city.toLowerCase())
+    .slice(-5)
+    .reverse();
+
+  if (relevant.length === 0) {
+    notificationList.innerHTML = "<p class=\"fine-print\">No notifications yet.</p>";
+    return;
+  }
+
+  notificationList.innerHTML = relevant
+    .map(
+      (item) => `
+        <div class="notification-item">
+          <strong>${item.name}</strong>
+          <span>New school registered in ${item.city}</span>
+          <span>${item.time}</span>
+        </div>
+      `
+    )
+    .join("");
+};
+
 [nameInput, cityInput, ratingInput].forEach((input) =>
   input.addEventListener("input", filterSchools)
 );
@@ -124,5 +159,52 @@ ratingForm.addEventListener("submit", (event) => {
   renderSchools(schools);
 });
 
+parentProfileForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  parentProfile = {
+    name: document.getElementById("parent-name").value.trim(),
+    email: document.getElementById("parent-email").value.trim(),
+    city: parentCityInput.value.trim()
+  };
+  renderNotifications();
+});
+
+registrationForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const name = document.getElementById("school-name").value.trim();
+  const city = document.getElementById("school-city").value.trim();
+  const type = document.getElementById("school-type").value;
+  const overview = document.getElementById("school-overview").value.trim();
+  const address = document.getElementById("school-address").value.trim();
+
+  if (!name || !city || !type || !address) {
+    return;
+  }
+
+  const id = `${name.toLowerCase().replace(/\s+/g, "-")}-${Date.now()}`;
+  const newSchool = {
+    id,
+    name,
+    city,
+    type,
+    rating: 0,
+    reviews: 0,
+    highlights: overview || "Newly registered school profile."
+  };
+
+  schools.unshift(newSchool);
+  schoolRegistrations.push({
+    name,
+    city,
+    time: new Date().toLocaleString()
+  });
+
+  renderSchools(schools);
+  populateRatingOptions();
+  renderNotifications();
+  registrationForm.reset();
+});
+
 populateRatingOptions();
 renderSchools(schools);
+renderNotifications();
