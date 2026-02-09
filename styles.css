@@ -131,6 +131,33 @@ main {
   box-shadow: 0 24px 60px rgba(15, 42, 61, 0.12);
 }
 
+.notifications-card {
+  border: 1px solid rgba(39, 195, 183, 0.2);
+}
+
+.notification-list {
+  margin-top: 16px;
+  background: var(--slate-100);
+  border-radius: 16px;
+  padding: 16px;
+  display: grid;
+  gap: 12px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--slate-500);
+}
+
+.notification-item strong {
+  color: var(--blue-900);
+  font-size: 14px;
+}
+
 .login-form {
   display: grid;
   gap: 16px;
