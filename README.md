@@ -8,8 +8,9 @@ that help other families decide.
 
 - School discovery section with filters for name, city, and minimum rating.
 - Registration form to capture school details, contact info, and media uploads.
-- Parent login card and rating submission form.
+- Parent login card, profile capture, and rating submission form.
 - Client-side search, rating updates, and a geolocation helper for quick city input.
+- Parent notifications when new schools register in their saved location.
 
 ## Project Structure
 
@@ -26,3 +27,5 @@ python -m http.server 8000
 ```
 
 Then open `http://localhost:8000` in your browser.
+app.js
+app.js
